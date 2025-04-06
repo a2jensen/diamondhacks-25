@@ -9,7 +9,7 @@ export default async function Learning() {
         <div className="p-2 max-w-6xl mx-auto">
             {/* Main Section Header */}
             <div className="mb-6">
-                <h1 className="text-2xl font-bold text-[#454888] mb-1 font-mono">Learning Resources</h1>
+                <h1 className="text-2xl font-bold text-[#454888] mb-1 font-mono text-shadow-lg">Learning Resources</h1>
                 <hr className="border-dashed border-[#5E3023] rounded-full border-1" />
                 </div>
 

@@ -32,7 +32,7 @@ export default function Quiz() {
 
   return (
     <div className="p-4 max-w-xl mx-auto bg-white shadow-lg shadow-[#6D6E93] rounded border border-[#6D6E93] h-full">
-      <h1 className="text-2xl font-bold mb-4 text-[#454888] font-mono ">Quiz: Music Instruments</h1>
+      <h1 className="text-2xl font-bold mb-4 text-[#454888] font-mono text-shadow-lg">Quiz: Music Instruments</h1>
 
       {quizData.map((q, idx) => (
         <div key={idx} className="mb-6">

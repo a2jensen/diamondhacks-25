@@ -28,7 +28,7 @@ export default function Flashcards() {
 
   return (
     <div className="p-8 max-w-6xl mx-auto">
-      <h1 className="text-2xl font-bold text-[#454888] mb-6 -mt-10 font-mono ">Flashcards</h1>
+      <h1 className="text-2xl font-bold text-[#454888] mb-6 -mt-10 font-mono text-shadow-lg">Flashcards</h1>
 
       <div className="flex items-center justify-center gap-4">
         <button onClick={prevCard} className="p-3 bg-[#D2CBC9] rounded-full hover:bg-[#6D6E93] shadow-lg">
