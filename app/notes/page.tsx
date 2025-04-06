@@ -4,12 +4,14 @@ import { checkAuth, fetchNotes, createNote } from "@/lib/db-utils";
 import { GiFishing } from "react-icons/gi";
 import { Button } from "@/components/ui/button";
 import { redirect } from "next/navigation";
+import { Input } from "@/components/ui/input";
 
 // Create a server action for creating a new note
-async function createNewNote() {
+async function createNewNote(formData : any) {
   'use server'
-  // Create a new note with a default title
-  const newNoteId = await createNote("New Note");
+  const noteName = formData.get('noteName') || "New Note";
+  // Create a new note with the provided title
+  const newNoteId = await createNote(noteName);
   // Redirect to the new note's page
   redirect(`/notes/${newNoteId}`);
 }
@@ -29,13 +31,20 @@ export default async function Notes() {
             
             <div className="flex justify-between items-center">
                 <h2 className="font-bold text-2xl text-[#6D6E93] font-mono">Your Notes</h2>
-                <form action={createNewNote}>
+                <form action={createNewNote} className="flex gap-2">
+                    <Input 
+                        name="noteName" 
+                        placeholder="Note name" 
+                        className="w-48"
+                        defaultValue="New Note"
+                        required
+                    />
                     <Button 
                         type="submit"
                         className="bg-[#5E3023] hover:bg-[#4E2013] text-white flex items-center gap-2"
                     >
                         <PlusCircle size={16} />
-                        Create New Note
+                        Create
                     </Button>
                 </form>
             </div>
@@ -55,13 +64,20 @@ export default async function Notes() {
             ) : (
                 <div className="text-center p-8 border rounded-md bg-muted/50">
                     <p className="mb-4">You don't have any notes yet. Create your first note to get started!</p>
-                    <form action={createNewNote} className="flex justify-center">
+                    <form action={createNewNote} className="flex gap-2 justify-center">
+                        <Input 
+                            name="noteName" 
+                            placeholder="Note name" 
+                            className="w-48"
+                            defaultValue="My First Note"
+                            required
+                        />
                         <Button 
                             type="submit"
                             className="bg-[#5E3023] hover:bg-[#4E2013] text-white flex items-center gap-2"
                         >
                             <PlusCircle size={16} />
-                            Create First Note
+                            Create
                         </Button>
                     </form>
                 </div>
