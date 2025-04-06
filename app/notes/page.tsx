@@ -1,26 +1,45 @@
-import { InfoIcon } from "lucide-react";
+import { InfoIcon, PlusCircle } from "lucide-react";
 import { NoteDisplay } from "@/components/note-display";
-import { checkAuth, fetchNotes } from "@/lib/db-utils";
+import { checkAuth, fetchNotes, createNote } from "@/lib/db-utils";
 import { GiFishing } from "react-icons/gi";
+import { Button } from "@/components/ui/button";
+import { redirect } from "next/navigation";
 
-
+// Create a server action for creating a new note
+async function createNewNote() {
+  'use server'
+  // Create a new note with a default title
+  const newNoteId = await createNote("New Note");
+  // Redirect to the new note's page
+  redirect(`/notes/${newNoteId}`);
+}
 
 export default async function Notes() {
-    const {notes}  = await fetchNotes();
-    console.log("notes:", notes);
-
+    const { notes } = await fetchNotes();
+    
     return (
         <div className="flex-1 w-full flex flex-col gap-6">
-
             <div className="flex items-center justify-center">
-        <h2 className="animate-typing overflow-hidden whitespace-nowrap border-r-4 border-r-[#5E3023] pr-5 text-6xl text-[#5E3023] font-bold mb-6 -mt-2 font-mono text-shadow-lg">  <span className="flex items-center gap-2">
-    Get Hooked on Learning
-    <GiFishing className="text-6xl" />
-  </span></h2>
-
-
-  </div>
-            <h2 className="font-bold text-2xl text-[#6D6E93] -mb-2 font-mono ">Your Notes</h2>
+                <h2 className="animate-typing overflow-hidden whitespace-nowrap border-r-4 border-r-[#5E3023] pr-5 text-6xl text-[#5E3023] font-bold mb-6 -mt-2 font-mono text-shadow-lg">
+                    <span className="flex items-center gap-2">
+                        Get Hooked on Learning
+                    </span>
+                </h2>
+            </div>
+            
+            <div className="flex justify-between items-center">
+                <h2 className="font-bold text-2xl text-[#6D6E93] font-mono">Your Notes</h2>
+                <form action={createNewNote}>
+                    <Button 
+                        type="submit"
+                        className="bg-[#5E3023] hover:bg-[#4E2013] text-white flex items-center gap-2"
+                    >
+                        <PlusCircle size={16} />
+                        Create New Note
+                    </Button>
+                </form>
+            </div>
+            
             <hr className="border-dashed border-[#5E3023] rounded-full border-1" />
             
             {notes && notes.length > 0 ? (
@@ -32,12 +51,19 @@ export default async function Notes() {
                             noteId={note.id.toString()} 
                         />
                     ))}
-                    
                 </div>
-                
             ) : (
                 <div className="text-center p-8 border rounded-md bg-muted/50">
-                    <p>You don't have any notes yet. Create your first note to get started!</p>
+                    <p className="mb-4">You don't have any notes yet. Create your first note to get started!</p>
+                    <form action={createNewNote} className="flex justify-center">
+                        <Button 
+                            type="submit"
+                            className="bg-[#5E3023] hover:bg-[#4E2013] text-white flex items-center gap-2"
+                        >
+                            <PlusCircle size={16} />
+                            Create First Note
+                        </Button>
+                    </form>
                 </div>
             )}
 
@@ -46,7 +72,6 @@ export default async function Notes() {
                 This is a protected page that you can only see as an authenticated
                 user
             </div>
-
         </div>
     );
 }

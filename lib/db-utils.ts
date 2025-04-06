@@ -51,18 +51,26 @@ export async function fetchNoteById(noteId: number) {
   return { note };
 }
 
-export async function fetchFlashcardSets(){
-
-}
-
-export async function fetchFlashcards(){
-
-}
-
-export async function fetchQuizzes(){
-
-}
-
-export async function fetchQuizQuestions(){
-
+export async function createNote(title: string) {
+  const { user, supabase } = await checkAuth();
+  
+  // Insert a new note for the current user
+  const { data, error } = await supabase
+    .from("notes")
+    .insert([
+      { 
+        title, 
+        content: "# Start writing here...", 
+        user_id: user.id 
+      }
+    ])
+    .select()
+    .single();
+  
+  if (error) {
+    console.error("Error creating note:", error);
+    throw new Error("Failed to create new note");
+  }
+  
+  return data.id;
 }
