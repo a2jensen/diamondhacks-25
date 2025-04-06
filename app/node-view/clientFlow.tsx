@@ -3,6 +3,7 @@
 import { ReactFlow, useNodesState, useEdgesState, Edge, addEdge, Connection } from '@xyflow/react'
 import '@xyflow/react/dist/style.css'
 import React, { useCallback } from 'react'
+import { useRouter } from 'next/navigation'
 
 interface notesType {
     id: any;
@@ -16,7 +17,8 @@ const styles = {
   height: 300,
 }
 
-export default function ClientFlow({ notes } : { notes : notesType[]} ) {
+export default function ClientFlow({ notes }: { notes: notesType[] }) {
+  const router = useRouter()
   const initialNodes = notes.map((note, index) => ({
     id: note.id.toString(),
     position: { x: 100, y: index * 120 },
@@ -42,6 +44,10 @@ export default function ClientFlow({ notes } : { notes : notesType[]} ) {
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
+        onNodeClick={(event, node) => {
+            console.log('Node clicked:', node.id)
+                router.push(`/notes/${node.id}`)
+            }}
       />
       <pre>{JSON.stringify(notes, null, 2)}</pre>
     </div>
