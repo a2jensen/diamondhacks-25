@@ -6,7 +6,7 @@ import { useStore } from "@/hooks/use-store";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import { PanelsTopLeft } from "lucide-react";
+import { ThemeSwitcher } from "@/components/theme-switcher";
 
 export function Sidebar() {
   const sidebar = useStore(useSidebar, (x) => x);
@@ -35,7 +35,7 @@ export function Sidebar() {
           variant="link"
           asChild
         >
-          <Link href="/dashboard" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2">
             <Image
               src="/images/fish.png"  
               alt="Memo Logo"   
