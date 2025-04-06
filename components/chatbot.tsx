@@ -12,6 +12,7 @@ interface Message {
 
 export default function GeminiChatbot() {
   const [messages, setMessages] = useState<Message[]>([]);
+  const [showChat, setShowChat] = useState(false);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -87,7 +88,20 @@ export default function GeminiChatbot() {
   };
 
   return (
-    <div className="flex flex-col h-[600px] w-full max-w-md mx-auto border rounded-md overflow-hidden">
+    <>
+    {/* Toggle Button */}
+    <Button 
+      onClick={() => setShowChat(prev => !prev)}
+      className="fixed bottom-6 right-6 z-50 p-3 rounded-full shadow-md bg-primary text-white hover:bg-primary/90"
+    >
+      {showChat ? "↓" : "↑"}
+    </Button>
+
+    {/* Chatbox */}
+    {showChat && (
+      <div className="fixed bottom-20 right-6 w-[90vw] max-w-md h-[600px] border rounded-md overflow-hidden bg-white shadow-lg z-40">
+        {/* insert your existing chatbot JSX here */}
+        <div className="flex flex-col h-[600px] w-full max-w-md mx-auto border rounded-md overflow-hidden">
       {/* Chat messages */}
       <div className="flex-1 p-4 overflow-y-auto">
         {messages.length === 0 ? (
@@ -157,5 +171,9 @@ export default function GeminiChatbot() {
         </Button>
       </form>
     </div>
+      </div>
+    )}
+  </>
   );
 }
+

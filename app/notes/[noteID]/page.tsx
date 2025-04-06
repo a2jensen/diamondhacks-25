@@ -11,5 +11,5 @@ export default async function NotePage({ params }: { params: { noteID: string } 
     return <div>Note not found or you don't have permission to view it.</div>;
   }
   // Pass the note data to the client component
-  return <NoteEditor initialNote={note} />;
+  return <NoteEditor initialNote={note} noteId={noteId} />;
 }
