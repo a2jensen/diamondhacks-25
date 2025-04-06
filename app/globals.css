@@ -3,9 +3,12 @@
 @tailwind utilities;
 @layer base {
   :root {
-    --background: #F5F0EE;  /* Light background color */
-    --foreground: #454888;  /* Text color */
-    --primary: #000000;     /* Primary color */
+    --background: #6D6E93;  
+    --foreground: #3a3e91;  
+   
+    --sidebar-background: #4e5073;
+    --sidebar-foreground: #7a5247;
+    
   }
 
   .dark {

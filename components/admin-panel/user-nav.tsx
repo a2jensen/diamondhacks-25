@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { LayoutGrid, LogOut, User } from "lucide-react";
-
+import { ThemeSwitcher } from "@/components/theme-switcher";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -68,6 +68,11 @@ export function UserNav() {
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
+        <DropdownMenuItem className="flex items-center hover:cursor-pointer">
+          <div className="flex-grow">
+            <ThemeSwitcher />
+          </div>
+        </DropdownMenuItem>
         <DropdownMenuItem className="hover:cursor-pointer" onClick={() => {}}>
           <LogOut className="w-4 h-4 mr-3 text-muted-foreground" />
           Sign out

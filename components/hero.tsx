@@ -1,44 +1,38 @@
-import NextLogo from "./next-logo";
-import SupabaseLogo from "./supabase-logo";
+"use client";
+
+import Image from "next/image";
+import { motion } from "motion/react";
+import { Typewriter } from 'react-simple-typewriter';
 
 export default function Header() {
   return (
-    <div className="flex flex-col gap-16 items-center">
-      <div className="flex gap-8 justify-center items-center">
-        <a
-          href="https://supabase.com/?utm_source=create-next-app&utm_medium=template&utm_term=nextjs"
-          target="_blank"
-          rel="noreferrer"
+    <div className = "flex flex-col gap-9 items-center">
+        <motion.div
+          className="flex gap-4 justify-center items-center"
+          initial = {{opacity: 0, y: 20}}
+          animate = {{opacity: 1, y: 0}}
+          transition = {{duration: 1, ease: "easeOut"}}
+          >
+        <Image src = {"/images/fish.png"} alt = "Memo Logo" width={300} height={300} />
+        <span className = "border-1 rotate-45 h-6" />
+        </motion.div>
+
+      <motion.div
+        className="text-3xl lg:text-4xl !leading-tight mx-auto max-w-xl text-center"
+        initial={{opacity: 0}}
+        animate = {{opacity: 1}}
+        transition={{duration: 1, delay: 0.2, ease: "easeOut"}}
         >
-          <SupabaseLogo />
-        </a>
-        <span className="border-l rotate-45 h-6" />
-        <a href="https://nextjs.org/" target="_blank" rel="noreferrer">
-          <NextLogo />
-        </a>
-      </div>
-      <h1 className="sr-only">Supabase and Next.js Starter Template</h1>
-      <p className="text-3xl lg:text-4xl !leading-tight mx-auto max-w-xl text-center">
-        The fastest way to build apps with{" "}
-        <a
-          href="https://supabase.com/?utm_source=create-next-app&utm_medium=template&utm_term=nextjs"
-          target="_blank"
-          className="font-bold hover:underline"
-          rel="noreferrer"
-        >
-          Supabase
-        </a>{" "}
-        and{" "}
-        <a
-          href="https://nextjs.org/"
-          target="_blank"
-          className="font-bold hover:underline"
-          rel="noreferrer"
-        >
-          Next.js
-        </a>
-      </p>
-      <div className="w-full p-[1px] bg-gradient-to-r from-transparent via-foreground/10 to-transparent my-8" />
+        <Typewriter
+          words={['Smarter notes, smarter you.']}
+          loop={false}
+          cursor
+          cursorStyle="|"
+          typeSpeed={90}
+          deleteSpeed={50}
+          delaySpeed={4000}
+          />  
+      </motion.div>
     </div>
   );
 }
