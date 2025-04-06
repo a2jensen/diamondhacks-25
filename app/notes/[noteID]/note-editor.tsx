@@ -4,6 +4,7 @@ import "@uiw/react-md-editor/markdown-editor.css";
 import "@uiw/react-markdown-preview/markdown.css";
 import dynamic from "next/dynamic";
 import { useState } from "react";
+import GeminiChatbot from "@/components/chatbot";
 
 // Define types for our messages
 interface Message {
@@ -172,6 +173,7 @@ export default function NoteEditor({ initialNote, noteId }: { initialNote: any, 
           style={{ maxWidth: '100%' }} // Ensure it doesn't exceed the container
         />
       </div>
+      <GeminiChatbot noteContent={value}/>
     </div>
   );
 }
