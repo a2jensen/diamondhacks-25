@@ -15,14 +15,14 @@ export default async function Learning() {
 
             {/* FlashCards Section */}
             <div className="mb-10">
-                <h2 className="text-xl font-bold text-[#454888] mb-4">FlashCards</h2>
+                <h2 className="text-xl font-bold text-[#454888] mb-4">Flash Cards</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {instruments?.map((instrument) => (
                         <Link 
                             href={`/learning/flashcards/${instrument.id}`} 
                             key={instrument.id}
                         >
-                            <div className="p-4 bg-white shadow rounded border border-[#6D6E93] border-2 w-[300px] hover:shadow-md hover:border-[#000000] ">
+                            <div className="p-4 bg-white shadow rounded border border-[#6D6E93] border-1 w-[300px] shadow-md shadow-[#000000] hover:border-[#000000] hover:bg-[#6D6E93] hover:text-white  ">
                                 {instrument.name}
                             </div>
                         </Link>
@@ -39,7 +39,7 @@ export default async function Learning() {
                             href={`/learning/quiz/${instrument.id}`} 
                             key={instrument.id}
                         >
-                            <div className="p-4 bg-white shadow rounded border border-[#6D6E93] border-2 w-[300px]">
+                            <div className="p-4 bg-white shadow rounded border border-[#6D6E93] border-1 w-[300px] hover:border-[#000000] hover:bg-[#6D6E93] hover:text-white  shadow-md shadow-[#000000]">
                                 {instrument.name}
                             </div>
                         </Link>

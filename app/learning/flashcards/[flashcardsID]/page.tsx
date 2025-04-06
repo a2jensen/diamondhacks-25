@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import { cn } from '@/lib/utils'; // adjust path as needed
 
 export default function Flashcards() {
   const cards = [
@@ -28,40 +29,41 @@ export default function Flashcards() {
   return (
     <div className="p-8 max-w-6xl mx-auto">
       <h1 className="text-2xl font-bold text-[#454888] mb-6 -mt-10">Flashcards</h1>
-        
+
       <div className="flex items-center justify-center gap-4">
-        {/* Left Arrow */}
-        <button
-          onClick={prevCard}
-          className="p-3 bg-[#D2CBC9] rounded-full hover:bg-[#6D6E93] shadow-lg"
-        >
+        <button onClick={prevCard} className="p-3 bg-[#D2CBC9] rounded-full hover:bg-[#6D6E93] shadow-lg">
           <FaArrowLeft />
         </button>
 
-        {/* Flashcard */}
-        <div
-          onClick={flipCard}
-          className="mb-4 bg-white shadow-lg border-[#6D6E93] rounded-xl w-[620px] h-[415px] flex items-center justify-center text-center cursor-pointer transition-all duration-300"
-        >
-          <div>
-            <h2 className="text-xl font-semibold">
-              {isFlipped ? cards[index].back : cards[index].front}
-            </h2>
-            <p className="text-sm text-gray-400 mt-2">Click to flip</p>
-          </div>
-        </div>
-
-        {/* Right Arrow */}
         <button
-          onClick={nextCard}
-          className="p-3 bg-[#D2CBC9] rounded-full hover:bg-[#6D6E93] shadow-lg"
+          type="button"
+          onClick={flipCard}
+          className="w-[520px] h-[340px] outline-none [perspective:1000px] "
         >
+          <div
+            className={cn(
+              'relative w-full h-full transition duration-700 [transform-style:preserve-3d]',
+              isFlipped && '[transform:rotateY(180deg)]'
+            )}
+          >
+            {/* Front Side */}
+            <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] bg-white text-[#000000] rounded-xl flex items-center border border-[#6D6E93] justify-center text-xl font-semibold">
+              {cards[index].front}
+            </div>
+
+            {/* Back Side */}
+            <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] bg-white text-[#454888] border border-[#6D6E93] rounded-xl flex items-center justify-center text-xl font-semibold">
+              {cards[index].back}
+            </div>
+          </div>
+        </button>
+
+        <button onClick={nextCard} className="p-3 bg-[#D2CBC9] rounded-full hover:bg-[#6D6E93] shadow-lg">
           <FaArrowRight />
         </button>
       </div>
 
-      {/* Optional card index display */}
-      <p className="mb-9 text-center mt-4 text-[#6D6E93]">
+      <p className="mt-4 text-center text-[#6D6E93]">
         Card {index + 1} of {cards.length}
       </p>
     </div>
