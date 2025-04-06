@@ -153,7 +153,7 @@ export default function NoteEditor({ initialNote, noteId }: { initialNote: any, 
             Save
           </button>
           <button 
-            className={`px-2 py-2 bg-black text-white rounded ${isGenerating ? 'opacity-50 cursor-not-allowed' : ''}`}
+            className={`font-mono px-2 py-2 bg-white text-[#454888] rounded border border-[#454888] hover:bg-[#454888] hover:text-white transition duration-300${isGenerating ? 'opacity-50 cursor-not-allowed' : ''}`}
             onClick={requestFlashcardSet}
             disabled={isGenerating}
           >
