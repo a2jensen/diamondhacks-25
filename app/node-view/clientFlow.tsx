@@ -43,7 +43,7 @@ export default function ClientFlow({ notes }: { notes: notesType[] }) {
 
   return (
     <div>
-    <h1 className="text-2xl font-bold text-[#454888] mb-6 -mt-10">Node Diagrams</h1>
+    <h1 className="text-2xl font-bold text-[#454888] mb-6 mt-10 ml-20">Mind Map</h1>
     <div style={{ width: '100vw', height: '100vh'}}>
       <ReactFlow
         style={styles}
