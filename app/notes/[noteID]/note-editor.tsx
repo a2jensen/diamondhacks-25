@@ -23,8 +23,8 @@ export default function NoteEditor({ initialNote }: { initialNote: any }) {
   return (
     <div className="w-full  px-4">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold">{initialNote.title || "Untitled Note"}</h1>
-        <button className="px-4 py-2 bg-black text-white rounded">
+        <h1 className="text-2xl font-bold text-[#454888] font-mono">{initialNote.title || "Untitled Note"}</h1>
+        <button className="font-mono px-4 py-2 bg-white text-[#454888] rounded border border-[#454888] hover:bg-[#454888] hover:text-white transition duration-300">
           Save
         </button>
       </div>
