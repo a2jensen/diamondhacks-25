@@ -9,8 +9,8 @@
   }
 
   .dark {
-    --background: #111111;  /* Dark background color */
-    --foreground: #E0E0E0;  /* Light text color for dark theme */
+    --background: #5C5863;  /* Dark background color */
+    --foreground: #DED5D0;  /* Light text color for dark theme */
   }
 }
 

@@ -22,7 +22,7 @@ export default async function Learning() {
                             href={`/learning/flashcards/${instrument.id}`} 
                             key={instrument.id}
                         >
-                            <div className="p-4 bg-white shadow rounded border border-[#6D6E93] w-[300px]">
+                            <div className="p-4 bg-white shadow rounded border border-[#6D6E93] border-2 w-[300px] hover:shadow-md hover:border-[#000000] ">
                                 {instrument.name}
                             </div>
                         </Link>
