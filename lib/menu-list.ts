@@ -31,19 +31,19 @@ export function getMenuList(pathname: string): Group[] {
       groupLabel: "",
       menus: [
         {
-          href: "/app/notes",
+          href: "/notes",
           label: "Notes",
           icon: NotebookText,
           submenus: []
         },
         {
-          href: "/app/learning",
+          href: "/learning",
           label: "Learn",
           icon: Brain,
           submenus: []
         },
         {
-          href: "/app/node-view",
+          href: "/node-view",
           label: "Node Diagrams",
           icon: Workflow
         }
