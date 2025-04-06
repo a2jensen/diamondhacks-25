@@ -6,13 +6,12 @@ import { useStore } from "@/hooks/use-store";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import { ThemeSwitcher } from "@/components/theme-switcher";
 
 export function Sidebar() {
   const sidebar = useStore(useSidebar, (x) => x);
   if (!sidebar) return null;
-  const { isOpen, toggleOpen, getOpenState, setIsHover, settings } = sidebar;
-
+  
+  const { isOpen, toggleOpen, getOpenState, setIsHover, settings } = sidebar;  
   return (
     <aside
       className={cn(
